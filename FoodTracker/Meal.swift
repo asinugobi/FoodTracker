@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import os.log
 
-class Meal {
+class Meal: NSObject, NSCoding {
     //Mark: Properties
     var name: String
     var photo: UIImage?
@@ -30,6 +31,17 @@ class Meal {
         self.name = name
         self.photo = photo
         self.rating = rating
+    }
+    
+    //MARK: NSCoding
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(name, forKey: PropertyKey.name)
+        aCoder.encode(photo, forKey: PropertyKey.photo)
+        aCoder.encode(rating, forKey: PropertyKey.rating)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        <#code#>
     }
 }
 
